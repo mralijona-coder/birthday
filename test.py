@@ -22,7 +22,7 @@ if st.button("я - та самая, войти"):
 
         st.success("ЕСССССС , это ты!!!!")
     
-        st.video("https://t.me/drangel1108/2/embed")
+        st.video("0001-0800.mp4")
         
     elif age == 0 or color == "" or nickname == "" or lakab == "":
         st.warning("А нужно то ответить на все вопросы 🙃")
