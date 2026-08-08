@@ -10,7 +10,7 @@ def get_base64_image(image_path):
         return base64.b64encode(img_file.read()).decode()
 
 
-# Убедитесь, что имя файла совпадает с сохраненным (например, 'photo.jpg')
+# Картинка 'photo.jpg' должна лежать в одной папке с этим скриптом!
 try:
     img_base64 = get_base64_image("photo.jpg")
 
@@ -23,17 +23,30 @@ try:
             background-size: cover;
             background-position: center;
         }}
-        /* Подложка под элементы для идеальной читаемости текста поверх гор и травы */
+        /* Плотная белая подложка под каждый блок с текстом для идеальной читаемости */
         .stElementContainer {{
-            background-color: rgba(255, 255, 255, 0.75);
-            padding: 8px 15px;
-            border-radius: 12px;
-            margin-bottom: 8px;
+            background-color: rgba(255, 255, 255, 0.92) !important;
+            padding: 15px 20px !important;
+            border-radius: 12px !important;
+            margin-bottom: 15px !important;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
         }}
-        /* Кнопки, видео и сообщения об ошибках оставляем без лишних рамок */
+        /* Принудительно красим ВСЕ тексты, заголовки и вопросы в глубокий черный цвет */
+        h1, h2, h3, p, label, .stMarkdown, p[data-testid="stWidgetLabel"] {{
+            color: #000000 !important;
+            font-weight: 600 !important;
+        }}
+        /* Настройка текста внутри самих полей ввода */
+        input {{
+            color: #000000 !important;
+            background-color: #ffffff !important;
+            font-weight: 500 !important;
+        }}
+        /* Кнопки, видео и сообщения об ошибках оставляем без белых рамок */
         div[data-testid="stButton"], div[data-testid="stVideo"], div[data-testid="stNotification"] {{
             background-color: transparent !important;
             padding: 0 !important;
+            box-shadow: none !important;
         }}
         </style>
         """,
@@ -41,7 +54,7 @@ try:
     )
 except FileNotFoundError:
     st.error(
-        "Ой! Не нашли файл 'photo.jpg'. Пожалуйста, переименуйте скачанное фото в 'photo.jpg' и положите в папку со скриптом."
+        "Ой! Не нашли файл 'photo.jpg'. Пожалуйста, переименуйте сохраненное фото в 'photo.jpg' и положите его в папку со скриптом."
     )
 # -----------------------------------------------
 
@@ -70,10 +83,12 @@ if st.button("я - та самая, войти"):
         and clean_nickname == "ангелок"
         and clean_lakab == "волшебный"
     ):
+        st.balloons()  # Эффектный взлет шариков при правильном ответе!
         st.success("ЕСССССС , это ты!!!!")
         st.video("0001-0800.mp4")
     elif age == 0 or color == "" or nickname == "" or lakab == "":
         st.warning("А нужно то ответить на все вопросы 🙃")
     else:
         st.error("ойойойой, ты не та самая 🥱, кыш кыш")
+
 
