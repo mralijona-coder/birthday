@@ -4,13 +4,13 @@ import streamlit as st
 st.set_page_config(page_title="МОЕ ПОЗДРАВЛЕНИЕ)))", page_icon="🙈", layout="centered")
 
 
-# --- ФУНКЦИЯ ДЛЯ КОДИРОВАНИЯ ВАШЕЙ КАРТИНКИ ---
+
 def get_base64_image(image_path):
     with open(image_path, "rb") as img_file:
         return base64.b64encode(img_file.read()).decode()
 
 
-# Картинка 'photo.jpg' должна лежать в одной папке с этим скриптом!
+
 try:
     img_base64 = get_base64_image("photo.jpg")
 
@@ -42,8 +42,24 @@ try:
             background-color: #ffffff !important;
             font-weight: 500 !important;
         }}
-        /* Кнопки, видео и сообщения об ошибках оставляем без белых рамок */
-        div[data-testid="stButton"], div[data-testid="stVideo"], div[data-testid="stNotification"] {{
+        /* СТИЛЬ ДЛЯ КНОПКИ "Я ТА САМАЯ" */
+        div[data-testid="stButton"] button {{
+            background-color: #ffffff !important;
+            color: #000000 !important;
+            border: 2px solid #000000 !important;
+            font-weight: bold !important;
+            border-radius: 10px !important;
+            padding: 10px 25px !important;
+            transition: all 0.3s ease;
+        }}
+        /* Эффект при наведении на кнопку */
+        div[data-testid="stButton"] button:hover {{
+            background-color: #000000 !important;
+            color: #ffffff !important;
+            transform: scale(1.02);
+        }}
+        /* Видео и сообщения оставляем без лишних рамок */
+        div[data-testid="stVideo"], div[data-testid="stNotification"] {{
             background-color: transparent !important;
             padding: 0 !important;
             box-shadow: none !important;
@@ -54,9 +70,8 @@ try:
     )
 except FileNotFoundError:
     st.error(
-        "Ой! Не нашли файл 'photo.jpg'. Пожалуйста, переименуйте сохраненное фото в 'photo.jpg' и положите его в папку со скриптом."
+        "Ой! Не нашли файл 'photo.jpg'. Пожалуйста, переименовайте сохраненное фото в 'photo.jpg' и положите его в папку со скриптом."
     )
-# -----------------------------------------------
 
 st.title("вход разрешен одной единственной 🫠")
 st.subheader("ответь на 4 вопроса, чтобы войти:")
@@ -83,12 +98,12 @@ if st.button("я - та самая, войти"):
         and clean_nickname == "ангелок"
         and clean_lakab == "волшебный"
     ):
-        st.balloons()  # Эффектный взлет шариков при правильном ответе!
         st.success("ЕСССССС , это ты!!!!")
         st.video("0001-0800.mp4")
     elif age == 0 or color == "" or nickname == "" or lakab == "":
         st.warning("А нужно то ответить на все вопросы 🙃")
     else:
         st.error("ойойойой, ты не та самая 🥱, кыш кыш")
+
 
 
