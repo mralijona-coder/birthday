@@ -23,7 +23,6 @@ try:
             background-size: cover;
             background-position: center;
         }}
-        /* Плотная белая подложка под каждый блок с текстом для идеальной читаемости */
         .stElementContainer {{
             background-color: rgba(255, 255, 255, 0.92) !important;
             padding: 15px 20px !important;
@@ -31,18 +30,16 @@ try:
             margin-bottom: 15px !important;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
         }}
-        /* Принудительно красим ВСЕ тексты, заголовки и вопросы в глубокий черный цвет */
         h1, h2, h3, p, label, .stMarkdown, p[data-testid="stWidgetLabel"] {{
             color: #000000 !important;
             font-weight: 600 !important;
         }}
-        /* Настройка текста внутри самих полей ввода */
+
         input {{
             color: #000000 !important;
             background-color: #ffffff !important;
             font-weight: 500 !important;
         }}
-        /* СТИЛЬ ДЛЯ КНОПКИ "Я ТА САМАЯ" */
         div[data-testid="stButton"] button {{
             background-color: #ffffff !important;
             color: #000000 !important;
@@ -52,13 +49,11 @@ try:
             padding: 10px 25px !important;
             transition: all 0.3s ease;
         }}
-        /* Эффект при наведении на кнопку */
         div[data-testid="stButton"] button:hover {{
             background-color: #000000 !important;
             color: #ffffff !important;
             transform: scale(1.02);
         }}
-        /* Видео и сообщения оставляем без лишних рамок */
         div[data-testid="stVideo"], div[data-testid="stNotification"] {{
             background-color: transparent !important;
             padding: 0 !important;
