@@ -79,7 +79,7 @@ age = st.number_input(
     step=1,
 )
 color = st.text_input("2. Какой твой любимый цвет?", value="")
-nickname = st.text_input("3. Ты и есть на самом деле - ?", value="")
+nickname = st.text_input("3. Кто ты по профессии? ", value="")
 lakab = st.text_input("4. Как ты называешь 'странного' человека?", value="")
 
 if st.button("я - та самая, войти"):
@@ -90,7 +90,7 @@ if st.button("я - та самая, войти"):
     if (
         age == 23
         and clean_color == "зеленый"
-        and clean_nickname == "ангелок"
+        and clean_nickname == "дезигнер"
         and clean_lakab == "волшебный"
     ):
         st.success("ЕСССССС , это ты!!!!")
